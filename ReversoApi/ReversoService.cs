@@ -16,7 +16,7 @@ namespace ReversoApi
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<TranslateTextResponse> TranslateText(TranslateTextRequest request)
+        public async Task<TranslateTextResponse> TranslateSentence(TranslateTextRequest request)
         {
             const string url = "TranslateText";
             var result = await Translate<TranslateTextResponse>(url, request);
@@ -29,14 +29,14 @@ namespace ReversoApi
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<TranslateWordResponce> TranslateWord(TranslateWordRequest request)
+        public async Task<TranslatedResponse> TranslateWord(TranslateWordRequest request)
         {
             const string url = "TranslateWord";
 
             request.Word ??= request.Source;
             request.Source ??= request.Word;
 
-            var result = await Translate<TranslateWordResponce>(url, request);
+            var result = await Translate<TranslatedResponse>(url, request);
             return result;
         }
 
@@ -45,10 +45,10 @@ namespace ReversoApi
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public async Task<TranslateWordResponce> TranslateSegment(TranslateSegmentRequest request)
+        public async Task<TranslatedResponse> TranslateSegment(TranslateSegmentRequest request)
         {
             const string url = "TranslateSimple";
-            var result = await Translate<TranslateWordResponce>(url, request);
+            var result = await Translate<TranslatedResponse>(url, request);
 
             return result;
         }

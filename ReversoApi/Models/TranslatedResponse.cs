@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ReversoApi.Models.Word
+namespace ReversoApi.Models
 {
     public class Context
     {
@@ -34,7 +34,7 @@ namespace ReversoApi.Models.Word
         public string DirectionTo { get; set; }
     }
 
-    public class TranslateWordResponce: ResporseError
+    public class TranslatedResponse: ResporseError
     {
         public IList<Sources> Sources { get; set; }
         public string WordSentence { get; set; }
