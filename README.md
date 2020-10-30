@@ -24,7 +24,7 @@ TranslateTextResponse translatedText = await service.TranslateSentence(new Trans
 ## API 
 
 ### TranslateWord
-Translates one word with or without context
+Translates single word with or without context
 
 **Params**: <br>
 + Word: word to translate <br>
@@ -56,7 +56,7 @@ foreach (var resultSource in result.Sources)
 ```
 
 ### TranslateSentence
-Translates one sentence
+Translates single sentence
 
 **Params:**
 + Source: text to translate
