@@ -6,9 +6,9 @@ using ReversoApi.Models.Word;
 
 namespace ReversoApi
 {
-    public class ReversoService
+    public sealed class ReversoService
     {
-        private readonly ReversoApi _api = new ReversoApi();
+        private readonly ReversoApi _api = new();
 
         
         /// <summary>
@@ -52,7 +52,6 @@ namespace ReversoApi
 
             return result;
         }
-
 
         private async Task<T> Translate<T>(string url, TranslateRequestBase request)
         {

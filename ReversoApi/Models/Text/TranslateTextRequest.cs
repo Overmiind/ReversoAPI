@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReversoApi.Models.Text
+﻿namespace ReversoApi.Models.Text
 {
-    public class TranslateTextRequest: TranslateRequestBase
+    public class TranslateTextRequest(Language @from, Language to) : TranslateRequestBase(@from, to)
     {
-        public TranslateTextRequest(Language @from, Language to) : base(@from, to)
-        {
-        }
-    }
+	}
 }

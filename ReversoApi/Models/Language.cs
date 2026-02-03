@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReversoApi.Models
+﻿namespace ReversoApi.Models
 {
     public enum Language
     {

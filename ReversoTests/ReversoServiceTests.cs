@@ -1,28 +1,15 @@
-using System.Threading.Tasks;
 using ReversoApi;
 using ReversoApi.Models;
 using ReversoApi.Models.Segment;
 using ReversoApi.Models.Text;
 using ReversoApi.Models.Word;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ReversoTests
 {
     public class ReversoServiceTests
     {
-        [Fact]
-        public async Task ShouldTranslateWord()
-        {
-            var service = new ReversoService();
-
-            var result = await service.TranslateWord(new TranslateWordRequest(Language.En, Language.Ru)
-            {
-                Word = "Influence"
-            });
-
-            TranslationNotEmpty(result);
-        }
-
         [Fact]
         public async Task ShouldTranslateSentence()
         {
@@ -41,7 +28,7 @@ namespace ReversoTests
         {
             var service = new ReversoService();
 
-            var result = await service.TranslateText(new TranslateTextRequest(Language.En, Language.Ru)
+            var result = await service.TranslateSentence(new TranslateTextRequest(Language.En, Language.Ru)
             {
                 Source = "Private methods"
             });
@@ -55,7 +42,7 @@ namespace ReversoTests
         {
             var service = new ReversoService();
 
-            var result = await service.TranslateText(new TranslateTextRequest(Language.En, Language.Ru)
+            var result = await service.TranslateSentence(new TranslateTextRequest(Language.En, Language.Ru)
             {
                 Source = ""
             });
@@ -64,8 +51,21 @@ namespace ReversoTests
             Assert.Equal("Source is empty", result.Message);
         }
 
+        [Fact]
+        public async Task ShouldTranslateWordWrong()
+        {
+            var service = new ReversoService();
 
-        private static void TranslationNotEmpty(TranslateWordResponce result)
+            var result = await service.TranslateWord(new TranslateWordRequest(Language.En, Language.Ru)
+            {
+                Word = "Influence",
+                Source = "They all wanted to influence the decision."
+            });
+
+            TranslationNotEmpty(result);
+        }
+
+        private static void TranslationNotEmpty(TranslatedResponse result)
         {
             Assert.True(result.Success);
             Assert.False(result.Error);

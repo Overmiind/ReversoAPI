@@ -1,18 +1,13 @@
 ﻿namespace ReversoApi.Models
 {
-    public class TranslateRequestBase
-    {
-        public const string DeviceId = "0";
-        public const string UiLang = "ru";
-        public const string Origin = "chromeextension";
-        public const string AccessToken = "";
-        public readonly string Direction;
+    public class TranslateRequestBase(Language @from, Language to)
+	{
         public string Source { get; set; }
-        public const string AppId = "0";
-
-        public TranslateRequestBase(Language from, Language to)
-        {
-            Direction = $"{from.ToString().ToLower()}-{to.ToString().ToLower()}";
-        }
-    }
+        public string Direction => $"{@from.ToString().ToLower()}-{to.ToString().ToLower()}";
+        public string DeviceId { get; init; }  = "0";
+        public string UiLang { get; init; } = "ru";
+        public string Origin { get; init; } = "chromeextension";
+        public string AccessToken { get; init; } = "";
+        public string AppId { get; init; } = "0";
+	}
 }

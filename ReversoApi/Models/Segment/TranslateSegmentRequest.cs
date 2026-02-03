@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReversoApi.Models.Segment
+﻿namespace ReversoApi.Models.Segment
 {
-    public class TranslateSegmentRequest: TranslateRequestBase
+    public class TranslateSegmentRequest(Language @from, Language to) 
+        : TranslateRequestBase(@from, to)
     {
-        public TranslateSegmentRequest(Language @from, Language to) : base(@from, to)
-        {
-        }
-    }
+	}
 }

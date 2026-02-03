@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ReversoApi.Models.Text
+﻿namespace ReversoApi.Models.Text
 {
-    public class TranslateTextResponse: ResporseError
+    public class TranslateTextResponse : ResporseError
     {
         public string Translation { get; set; }
         public object FavoriteId { get; set; }
