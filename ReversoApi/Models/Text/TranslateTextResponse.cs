@@ -1,6 +1,6 @@
-﻿namespace ReversoApi.Models.Text
+namespace ReversoApi.Models.Text
 {
-    public class TranslateTextResponse : ResporseError
+    public class TranslateTextResponse : ResponseError
     {
         public string Translation { get; set; }
         public object FavoriteId { get; set; }

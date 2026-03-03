@@ -1,12 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
+    <Title>Reverso Api Client</Title>
+    <Authors>Overmiind</Authors>
+    <Description>Unofficial translation api client for Reverso Context </Description>
+    <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/Overmiind/ReversoAPI</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Overmiind/ReversoAPI/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/Overmiind/ReversoAPI</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>translator api client reverso reverso-context </PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="RestSharp" Version="113.1.0" />
   </ItemGroup>
 
 </Project>

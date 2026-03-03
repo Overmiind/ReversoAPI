@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace ReversoApi.Models
 {
@@ -34,7 +34,7 @@ namespace ReversoApi.Models
         public string DirectionTo { get; set; }
     }
 
-    public class TranslatedResponse: ResporseError
+    public class TranslatedResponse: ResponseError
     {
         public IList<Sources> Sources { get; set; }
         public string WordSentence { get; set; }

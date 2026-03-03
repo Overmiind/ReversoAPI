@@ -1,33 +1,24 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-[assembly: InternalsVisibleTo("ReversoTests")]
 namespace ReversoApi
 {
-    internal sealed class ApiHttpResponse<TResponse>
+    internal sealed class ReversoSegmentApi : IDisposable
     {
-        public required HttpStatusCode StatusCode { get; init; }
-        public required bool IsSuccessful { get; init; }
-        public string? ErrorMessage { get; init; }
-        public TResponse? Data { get; init; }
-    }
-
-    internal sealed class ReversoApi : IDisposable
-    {
-        public const string Url = "https://cps.reverso.net/api2/";
+        public const string Url = "https://cps-api.reverso.net/Api/";
         private readonly HttpClient _client;
         private static readonly JsonSerializerOptions JsonOptions = new()
         {
             PropertyNameCaseInsensitive = true
         };
 
-        public ReversoApi()
+        public ReversoSegmentApi()
         {
             _client = new HttpClient
             {
@@ -43,15 +34,18 @@ namespace ReversoApi
             _client.Dispose();
         }
 
-        public async Task<ApiHttpResponse<TResponse>> SendPostRequest<TResponse>(
-            string url,
-            object model,
+        public async Task<ApiHttpResponse<TResponse>> SendGetRequest<TResponse>(
+            string resource,
+            IReadOnlyDictionary<string, string> queryParams,
             CancellationToken cancellationToken = default)
         {
+            var query = await new FormUrlEncodedContent(queryParams).ReadAsStringAsync(cancellationToken);
+            var requestUri = string.IsNullOrEmpty(query) ? resource : $"{resource}?{query}";
+
             HttpResponseMessage response;
             try
             {
-                response = await _client.PostAsJsonAsync(url, model, JsonOptions, cancellationToken);
+                response = await _client.GetAsync(requestUri, cancellationToken);
             }
             catch (Exception ex)
             {
