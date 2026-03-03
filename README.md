@@ -1,5 +1,5 @@
 # ReversoAPI
-[![NuGet Downloads](https://img.shields.io/nuget/dt/ReversoApiClient)](https://www.nuget.org/packages/ReversoApiClient/1.0.0)
+[![NuGet Downloads](https://img.shields.io/nuget/v/ReversoApiClient)](https://www.nuget.org/packages/ReversoApiClient/1.0.0)
 
 Unofficial Reverso Context client for .NET.
 
